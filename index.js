@@ -36,7 +36,7 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-  const generatedMove = move(request);
+  const generatedMove = move(request.body);
 
   return response.json({
     move: generatedMove,
