@@ -28,7 +28,6 @@ describe('avoids walls', () => {
 
   test('up', () => {
     expect(avoidWalls({ x: 3, y: 0 }, 11)).toEqual([
-      undefined,
       'right',
       'down',
       'left',
@@ -38,7 +37,6 @@ describe('avoids walls', () => {
   test('right', () => {
     expect(avoidWalls({ x: 10, y: 5 }, 11)).toEqual([
       'up',
-      undefined,
       'down',
       'left',
     ]);
@@ -48,7 +46,6 @@ describe('avoids walls', () => {
     expect(avoidWalls({ x: 3, y: 10 }, 11)).toEqual([
       'up',
       'right',
-      undefined,
       'left',
     ]);
   });
@@ -58,7 +55,6 @@ describe('avoids walls', () => {
       'up',
       'right',
       'down',
-      undefined,
     ]);
   });
 });

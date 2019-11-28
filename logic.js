@@ -44,12 +44,14 @@ const fromEuclid = ({ x, y }) => {
 };
 
 // Return valid moves to avoid a wall
-const avoidWalls = (head, boardSize) => ([
-  head.y > 0 ? 'up' : undefined,
-  head.x < boardSize - 1 ? 'right' : undefined,
-  head.y < boardSize - 1 ? 'down' : undefined,
-  head.x > 0 ? 'left' : undefined,
-]);
+const avoidWalls = (head, boardSize) => {
+  return [
+    head.y > 0 ? 'up' : undefined,
+    head.x < boardSize - 1 ? 'right' : undefined,
+    head.y < boardSize - 1 ? 'down' : undefined,
+    head.x > 0 ? 'left' : undefined,
+  ].filter(move => move !== undefined);
+};
 
 let previous = 'down';
 
