@@ -32,13 +32,13 @@ const moveTowardsFood = (food, head) => {
 };
 
 const fromEuclid = ({ x, y }) => {
-  if (x === 1) {
+  if (x > 0) {
     return 'right';
-  } else if (x === -1) {
+  } else if (x < 0) {
     return 'left';
-  } else if (y === 1) {
+  } else if (y > 0) {
     return 'up';
-  } else if (y === -1) {
+  } else if (y < 0) {
     return 'down';
   }
 };

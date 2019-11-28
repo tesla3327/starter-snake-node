@@ -68,7 +68,7 @@ test('it moves towards the food', () => {
 });
 
 test('it converts directions properly', () => {
-  expect(fromEuclid({ x: 0, y: 1 })).toBe('up');
+  expect(fromEuclid({ x: 0, y: 3 })).toBe('up');
 });
 
 test('it converts directions properly', () => {
