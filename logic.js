@@ -57,6 +57,8 @@ const avoidObstacles = (head, obstacles) => {
   const distances = obstacles.map(point => distance(head, point));
   const allowedMoves = [];
 
+  console.log(distances);
+
   if (!distances.some(p => p.y === -1)) {
     allowedMoves.push('up');
   }
