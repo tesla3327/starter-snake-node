@@ -4,6 +4,7 @@ const {
   closestPoint,
   avoidWalls,
   fromEuclid,
+  move,
 } = require('./logic.js');
 
 const origin = {
