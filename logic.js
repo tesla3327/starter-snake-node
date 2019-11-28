@@ -91,7 +91,7 @@ const move = ({ board, you }) => {
     head,
     you.body.concat
   );
-  const validMoves = avoidObstaclesMoves.filter(move => avoidWallsMoves.includes(move));
+  const validMoves = avoidObstaclesMoves.filter(m => avoidWallsMoves.includes(m));
 
   // Move towards food if we can
   if (board.food.length > 0) {
