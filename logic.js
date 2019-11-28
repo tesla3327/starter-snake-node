@@ -71,7 +71,7 @@ const move = ({ board, you }) => {
     move = fromEuclid(foodMove);
   } else {
     // Avoid walls generally
-    const validMoves = avoidWalls(you.body[0], board.width).includes(move);
+    const validMoves = avoidWalls(you.body[0], board.width);
     move = validMoves.includes(move) || validMoves[0];
   }
 
