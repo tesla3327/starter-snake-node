@@ -55,7 +55,9 @@ const avoidWalls = (head, boardSize) => {
 
 let previous = 'down';
 
-const move = ({ board, you }) => {
+const move = (request) => {
+  console.log(request);
+
   // Keep moving in a straight line
   let move = previous;
 
