@@ -60,11 +60,11 @@ const avoidObstacles = (head, obstacles) => {
   console.log(distances);
 
   if (!distances.some(p => p.y === -1)) {
-    allowedMoves.push('up');
+    allowedMoves.push('down');
   }
 
   if (!distances.some(p => p.y === 1)) {
-    allowedMoves.push('down');
+    allowedMoves.push('up');
   }
 
   if (!distances.some(p => p.x === -1)) {
