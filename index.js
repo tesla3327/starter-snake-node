@@ -36,12 +36,12 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-  const move = move(requeust);
+  const generatedMove = move(request);
 
-  console.log(move);
+  console.log(generatedMove);
 
   return response.json({
-    move: 'right',
+    move: generatedMove,
   });
 })
 
