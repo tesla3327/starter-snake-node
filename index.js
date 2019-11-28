@@ -41,7 +41,7 @@ app.post('/move', (request, response) => {
   console.log(move);
 
   return response.json({
-    move
+    move: 'right',
   });
 })
 
