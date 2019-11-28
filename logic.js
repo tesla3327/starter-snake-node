@@ -53,6 +53,29 @@ const avoidWalls = (head, boardSize) => {
   ].filter(move => move !== undefined);
 };
 
+const avoidObstacles = (head, obstacles) => {
+  const distances = obstacles.map(point => distance(a, point));
+  const allowedMoves = [];
+
+  if (!distances.some(p => p.y === -1)) {
+    allowedMoves.push('up');
+  }
+
+  if (!distances.some(p => p.y === 1)) {
+    allowedMoves.push('down');
+  }
+
+  if (!distances.some(p => p.x === -1)) {
+    allowedMoves.push('left');
+  }
+
+  if (!distances.some(p => p.y === -1)) {
+    allowedMoves.push('right');
+  }
+
+  return allowedMoves;
+};
+
 let previous = 'down';
 
 const move = ({ board, you }) => {
@@ -63,21 +86,37 @@ const move = ({ board, you }) => {
   console.log(you);
   console.log(previous);
 
+  const avoidWallsMoves = avoidWalls(you.body[0], board.width);
+  const avoidObstaclesMoves = avoidObstacles(
+    head,
+    you.body.concat(
+      board.snakes
+        .map(snake => snake.body)
+        .reduce((prev, next) => prev.concat(next), [])
+    )
+  );
+  const validMoves = avoidObstaclesMoves.filter(move => avoidWallsMoves.includes(move));
+
   // Move towards food if we can
   if (board.food.length > 0) {
     const foodMove = moveTowardsFood(board.food, you.body[0]);
     console.log('Towards food');
     console.log(foodMove);
     move = fromEuclid(foodMove);
-  } else {
-    // Avoid walls generally
-    const validMoves = avoidWalls(you.body[0], board.width);
-    move = validMoves.includes(move) || validMoves[0];
   }
 
+  console.log('Considering move:');
   console.log(move);
 
+  // Prevent us from hitting things
+  move = validMoves.includes(move)
+    ? move
+    : validMoves[0];
+
+  console.log(`Final move: ${move}`);
+
   previous = move;
+
   return move;
 };
 
