@@ -65,7 +65,10 @@ const move = ({ board, you }) => {
 
   // Move towards food if we can
   if (board.food.length > 0) {
-    move = fromEuclid(moveTowardsFood(board.food, you.body[0]));
+    const foodMove = moveTowardsFood(board.food, you.body[0]);
+    console.log('Towards food');
+    console.log(foodMove);
+    move = fromEuclid(foodMove);
   } else {
     // Avoid walls generally
     const validMoves = avoidWalls(you.body[0], board.width).includes(move);
@@ -84,4 +87,5 @@ module.exports = {
   distance,
   closestPoint,
   avoidWalls,
+  fromEuclid,
 };

@@ -3,6 +3,7 @@ const {
   distance,
   closestPoint,
   avoidWalls,
+  fromEuclid,
 } = require('./logic.js');
 
 const origin = {
@@ -64,6 +65,22 @@ test('it moves towards the food', () => {
     x: 0,
     y: 1,
   });
+});
+
+test('it converts directions properly', () => {
+  expect(fromEuclid({ x: 0, y: 1 })).toBe('up');
+});
+
+test('it converts directions properly', () => {
+  expect(fromEuclid({ x: 0, y: -1 })).toBe('down');
+});
+
+test('it converts directions properly', () => {
+  expect(fromEuclid({ x: 1, y: 0 })).toBe('right');
+});
+
+test('it converts directions properly', () => {
+  expect(fromEuclid({ x: -1, y: 0 })).toBe('left');
 });
 
 test('gets the distance between two points', () => {
