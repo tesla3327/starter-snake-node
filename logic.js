@@ -59,19 +59,19 @@ const avoidObstacles = (head, obstacles) => {
 
   console.log(distances);
 
-  if (!distances.some(p => p.y === -1)) {
+  if (!distances.some(p => p.x === 0 && p.y === -1)) {
     allowedMoves.push('down');
   }
 
-  if (!distances.some(p => p.y === 1)) {
+  if (!distances.some(p => p.x === 0 && p.y === 1)) {
     allowedMoves.push('up');
   }
 
-  if (!distances.some(p => p.x === 1)) {
+  if (!distances.some(p => p.x === 1 && p.y === 0)) {
     allowedMoves.push('left');
   }
 
-  if (!distances.some(p => p.y === -1)) {
+  if (!distances.some(p => p.x === -1 && p.y === 0)) {
     allowedMoves.push('right');
   }
 
