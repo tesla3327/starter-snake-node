@@ -8,6 +8,7 @@ const {
   genericErrorHandler,
   poweredByHandler
 } = require('./handlers.js')
+const move = require('./logic.js');
 
 // For deployment to Heroku, the port needs to be set using ENV, so
 // we check for the port number in process.env
@@ -35,12 +36,9 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
-  // Response data
-  const data = {
-    move: 'right', // one of: ['up','down','left','right']
-  }
-
-  return response.json(data)
+  return response.json({
+    move: move(requeust),
+  });
 })
 
 app.post('/end', (request, response) => {
