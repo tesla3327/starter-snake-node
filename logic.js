@@ -89,7 +89,7 @@ const move = ({ board, you }) => {
   const avoidWallsMoves = avoidWalls(you.body[0], board.width);
   const avoidObstaclesMoves = avoidObstacles(
     head,
-    you.body.concat
+    you.body
   );
   const validMoves = avoidObstaclesMoves.filter(m => avoidWallsMoves.includes(m));
 
