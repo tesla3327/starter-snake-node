@@ -54,7 +54,7 @@ const avoidWalls = (head, boardSize) => {
 };
 
 const avoidObstacles = (head, obstacles) => {
-  const distances = obstacles.map(point => distance(a, point));
+  const distances = obstacles.map(point => distance(head, point));
   const allowedMoves = [];
 
   if (!distances.some(p => p.y === -1)) {
