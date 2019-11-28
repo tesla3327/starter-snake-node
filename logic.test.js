@@ -18,6 +18,13 @@ const points = [
   { x: 2, y: 0 },
 ]
 
+test('gets move', () => {
+  const generatedMove = move({
+    board: { width: 11, food: [] },
+    you: { body: [{ x: 1, y: 1 }] },
+  });
+});
+
 describe('avoids walls', () => {
   test('all', () => {
     expect(avoidWalls({ x: 3, y: 5 }, 11)).toEqual([
