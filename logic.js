@@ -37,9 +37,9 @@ const fromEuclid = ({ x, y }) => {
   } else if (x < 0) {
     return 'left';
   } else if (y > 0) {
-    return 'up';
-  } else if (y < 0) {
     return 'down';
+  } else if (y < 0) {
+    return 'up';
   }
 };
 
