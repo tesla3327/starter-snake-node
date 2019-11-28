@@ -36,8 +36,12 @@ app.post('/start', (request, response) => {
 
 // Handle POST request to '/move'
 app.post('/move', (request, response) => {
+  const move = move(requeust);
+
+  console.log(move);
+
   return response.json({
-    move: move(requeust),
+    move
   });
 })
 
