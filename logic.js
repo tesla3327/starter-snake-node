@@ -91,7 +91,11 @@ const move = ({ board, you }) => {
   const avoidWallsMoves = avoidWalls(you.body[0], board.width);
   const avoidObstaclesMoves = avoidObstacles(
     you.body[0],
-    you.body
+    you.body.concat(
+      board.snakes
+        .map(snake => snake.body)
+        .reduce((prev, next) => prev.concat(next), [])
+    )
   );
   const validMoves = avoidObstaclesMoves.filter(m => avoidWallsMoves.includes(m));
 
