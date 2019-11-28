@@ -67,7 +67,7 @@ const avoidObstacles = (head, obstacles) => {
     allowedMoves.push('up');
   }
 
-  if (!distances.some(p => p.x === -1)) {
+  if (!distances.some(p => p.x === 1)) {
     allowedMoves.push('left');
   }
 
