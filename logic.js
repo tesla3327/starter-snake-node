@@ -43,7 +43,15 @@ const fromEuclid = ({ x, y }) => {
   }
 };
 
-let previous = 'up';
+// Return valid moves to avoid a wall
+const avoidWalls = (head, boardSize) => ([
+  head.y > 0 ? 'up' : undefined,
+  head.x < boardSize - 1 ? 'right' : undefined,
+  head.y < boardSize - 1 ? 'down' : undefined,
+  head.x > 0 ? 'left' : undefined,
+]);
+
+let previous = 'down';
 
 const move = ({ turn, board, you }) => {
   // Keep moving in a straight line
@@ -52,6 +60,10 @@ const move = ({ turn, board, you }) => {
   // Move towards food if we can
   if (board.food.length > 0) {
     move = fromEuclid(moveTowardsFood(board.food, you.body[0]));
+  } else {
+    // Avoid walls generally
+    const validMoves = avoidWalls(you.body[0], board.width).includes(move);
+    move = validMoves.includes(move) || validMoves[0];
   }
 
   previous = move;
@@ -63,4 +75,5 @@ module.exports = {
   moveTowardsFood,
   distance,
   closestPoint,
+  avoidWalls,
 };
