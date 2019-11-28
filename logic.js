@@ -53,9 +53,13 @@ const avoidWalls = (head, boardSize) => ([
 
 let previous = 'down';
 
-const move = ({ turn, board, you }) => {
+const move = ({ board, you }) => {
   // Keep moving in a straight line
   let move = previous;
+
+  console.log(board);
+  console.log(you);
+  console.log(previous);
 
   // Move towards food if we can
   if (board.food.length > 0) {
@@ -65,6 +69,8 @@ const move = ({ turn, board, you }) => {
     const validMoves = avoidWalls(you.body[0], board.width).includes(move);
     move = validMoves.includes(move) || validMoves[0];
   }
+
+  console.log(move);
 
   previous = move;
   return move;
